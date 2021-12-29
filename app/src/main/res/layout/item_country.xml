@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <data>
+        <variable
+            name="country"
+            type="com.example.kotlincountries.model.Country" />
+        <variable
+            name="listener"
+            type="com.example.kotlincountries.adapter.CountryClickListener" />
+    </data>
+ <LinearLayout
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+     android:onClick="@{listener.onCounteryClicked}"
+    android:layout_height="150dp">
+     <TextView
+         android:id="@+id/countryUuidText"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:visibility="gone"
+         android:text="@{String.valueOf(country.uuid)}"
+         />
+      <ImageView
+          android:id="@+id/imageView"
+          android:layout_width="0dp"
+          android:layout_height="match_parent"
+          android:layout_weight="2"
+          android:padding="3dp"
+          android:src="@mipmap/ic_launcher_round"
+           android:downloadUrl="@{country.imageUrl}"
+          />
+
+     <LinearLayout
+         android:layout_width="0dp"
+         android:layout_height="match_parent"
+         android:orientation="vertical"
+         android:layout_weight="3"
+         android:gravity="center_vertical"
+         >
+
+         <TextView
+             android:id="@+id/name"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:text="@{country.countryName}"
+             android:padding="5dp"
+             android:textSize="20sp"
+             android:textStyle="bold"
+             />
+         <TextView
+             android:id="@+id/region"
+             android:transitionName="region"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:text="@{country.countryRegion}"
+             android:padding="5dp"
+             android:textSize="16dp"
+             />
+     </LinearLayout>
+ </LinearLayout>
+</layout>
